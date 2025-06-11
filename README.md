@@ -1,5 +1,5 @@
 
-📄 # Dedupify
+# 📄 Dedupify
 
 Developed by [Prerna Gyanchandani]
 
