@@ -71,7 +71,11 @@ with tabs[0]:
             ax.set_ylabel("PCA 2")
             ax.set_title("📌 Document Clusters")
             st.pyplot(fig)
-
+  <div style='text-align: center;'>
+        <p>Developed with ❤️ using Streamlit</p>
+        <p>© 2025 Prerna Gyanchandani. All Rights Reserved.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ------------------------
 # DOCUMENT DEDUPLICATION
