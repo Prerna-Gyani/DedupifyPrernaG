@@ -10,9 +10,9 @@ from sklearn.decomposition import PCA
 import PyPDF2
 
 # Set up Streamlit page
-st.set_page_config(page_title="Dedupify - Prerna Gyanchandani", layout="wide")
+st.set_page_config(page_title="Text Clustering & Document Deduplication - Prerna Gyanchandani", layout="wide")
 
-st.title("📄🧠 Dedupify - *Prerna Gyanchandani*")
+st.title("📄🧠 Text Clustering & Document Deduplication - *Prerna Gyanchandani*")
 st.markdown("Upload documents or enter text manually to analyze clusters and detect duplicates.")
 
 # --- Tabs ---
@@ -71,7 +71,9 @@ with tabs[0]:
             ax.set_ylabel("PCA 2")
             ax.set_title("📌 Document Clusters")
             st.pyplot(fig)
-  <div style='text-align: center;'>
+
+    st.markdown("""
+    <div style='text-align: center;'>
         <p>Developed with ❤️ using Streamlit</p>
         <p>© 2025 Prerna Gyanchandani. All Rights Reserved.</p>
     </div>
