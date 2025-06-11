@@ -31,6 +31,8 @@ with tabs[0]:
 
         if len(documents) < 2:
             st.warning("⚠️ Please enter at least 2 documents.")
+        elif num_clusters > len(documents):
+            st.error(f"❌ Number of clusters ({num_clusters}) cannot exceed number of documents ({len(documents)}).")
         else:
             vectorizer = TfidfVectorizer(stop_words='english')
             tfidf_matrix = vectorizer.fit_transform(documents)
@@ -125,6 +127,7 @@ with tabs[1]:
 
     if uploaded_files:
         filenames, documents = load_documents(uploaded_files)
+        st.write("📄 Uploaded Files:", filenames)
         with st.spinner("🔍 Analyzing documents..."):
             duplicates = find_duplicates(filenames, documents)
 
