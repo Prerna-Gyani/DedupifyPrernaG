@@ -23,6 +23,15 @@ tabs = st.tabs(["📌 Text Clustering", "📂 Document Deduplication"])
 # --------------
 with tabs[0]:
     st.header("🧠 Text Clustering using Cosine Similarity")
+    st.markdown("""
+    Example documents to try:
+    - The cat sat on the mat.
+    - A dog barked loudly at the stranger.
+    - The quick brown fox jumps over the lazy dog.
+    - The cat meowed and jumped off the couch.
+    - A stranger walked past the barking dog.
+    """)
+
     user_input = st.text_area("📝 Enter one document per line:", height=200)
     num_clusters = st.slider("🔢 Select number of clusters:", 2, 10, 3)
 
@@ -32,7 +41,7 @@ with tabs[0]:
         if len(documents) < 2:
             st.warning("⚠️ Please enter at least 2 documents.")
         elif num_clusters > len(documents):
-            st.error(f"❌ Number of clusters ({num_clusters}) cannot exceed number of documents ({len(documents)}).")
+            st.warning(f"⚠️ Number of clusters ({num_clusters}) cannot exceed number of documents ({len(documents)}).")
         else:
             vectorizer = TfidfVectorizer(stop_words='english')
             tfidf_matrix = vectorizer.fit_transform(documents)
@@ -74,12 +83,6 @@ with tabs[0]:
             ax.set_title("📌 Document Clusters")
             st.pyplot(fig)
 
-    st.markdown("""
-    <div style='text-align: center;'>
-        <p>Developed with ❤️ using Streamlit</p>
-        <p>© 2025 Prerna Gyanchandani. All Rights Reserved.</p>
-    </div>
-    """, unsafe_allow_html=True)
 
 # ------------------------
 # DOCUMENT DEDUPLICATION
@@ -102,14 +105,14 @@ with tabs[1]:
 
     def find_duplicates(filenames, documents, threshold=0.8):
         if not any(doc.strip() for doc in documents):
-            st.error("All uploaded documents are empty or contain only stop words.")
+            st.error("All uploaded documents are empty or contain only stop words. Please upload valid text files.")
             return []
 
         vectorizer = TfidfVectorizer(stop_words='english')
         try:
             tfidf_matrix = vectorizer.fit_transform(documents)
             if tfidf_matrix.shape[1] == 0:
-                st.error("No meaningful words found in the documents.")
+                st.error("No meaningful words found in the documents. Try different files.")
                 return []
 
             similarity_matrix = cosine_similarity(tfidf_matrix)
@@ -123,11 +126,11 @@ with tabs[1]:
             st.error(f"Error processing documents: {e}")
             return []
 
-    uploaded_files = st.file_uploader("📂 Upload Documents", accept_multiple_files=True, type=["txt", "pdf"])
+    uploaded_files = st.file_uploader("📂 Upload Documents", accept_multiple_files=True, type=["txt", "pdf"],
+                                      help="Upload multiple .txt or .pdf files")
 
     if uploaded_files:
         filenames, documents = load_documents(uploaded_files)
-        st.write("📄 Uploaded Files:", filenames)
         with st.spinner("🔍 Analyzing documents..."):
             duplicates = find_duplicates(filenames, documents)
 
