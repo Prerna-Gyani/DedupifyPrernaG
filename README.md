@@ -1,9 +1,12 @@
 
 # 📄 Dedupify
 
-Developed by [Prerna Gyanchandani]
+Developed by [Prerna Gyanchandani]l
 
-Dedupify is a user-friendly Streamlit web application for performing intelligent text clustering and document deduplication. It allows users to either input free-form text or upload .txt/.pdf files to analyze similarities, cluster texts, and identify duplicate content using machine learning techniques.
+Dedupify is an intelligent document management system that uses document deduplication and clustering techniques, powered by Firebase and Streamlit. It efficiently identifies and removes duplicates, groups similar documents, and provides a user-friendly interface for seamless document organization and retrieval, improving data management, search functionality, and scalability.
+
+
+Dedupify is a user-friendly Streamlit web application for performing intelligent clustering and document deduplication. It allows users to either input free-form text or upload .txt/.pdf files to analyze similarities, cluster texts, and identify duplicate content using machine learning techniques.
 
 🚀 Features 
 
